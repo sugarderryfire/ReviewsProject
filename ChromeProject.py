@@ -22,7 +22,6 @@ twosecSleep = 2
 fivesecSleep = 5
 tensecSleep = 10
 twohourSleep = 7200
-fullFilenameDB = r'https://github.com/sugarderryfire/ReviewsProject/blob/master/reviewdb.xlsx?raw=true'
 playStoreURL=r'https://play.google.com/store'
 playStoreSearch=r'https://play.google.com/store/search?q='
 recoveryOptionsString2 = r'https://myaccount.google.com'
@@ -48,7 +47,7 @@ uploadfileCommand =  r'curl -u sugarderryfire:bit5bit5 -X POST https://api.bitbu
 #uploadfileCommand1 = r'curl -u '
 #uploadfileCommand2 = r' -X POST https://api.bitbucket.org/2.0/repositories/sugarderryfire/reviewsproject/src/ -F '
 bitpass = r'vip5vip5'
-fullFilenameDB = r'https://bitbucket.org/sugarderryfire/reviewsproject/raw/b5af00b88a1393d0a6d7e637e8513dcbc6626b14/reviewdb.xlsx'
+fullFilenameDB = r'https://bitbucket.org/sugarderryfire/reviewsproject/raw/master/reviewdb.xlsx'
 #bitbucket upload a file command - #curl -u sugarderryfire:bit5bit5 -X POST https://api.bitbucket.org/2.0/repositories/sugarderryfire/reviewsproject/src/ -F reviewdb.xlsx=@reviewdb.xlsx
 outputFileName="reviewdb.xlsx"
 settingsIDButton = "settings"  # the id string of the settings button.
@@ -67,6 +66,7 @@ passwordAuth = "admin123" #configuration details for the mobile wifi.
 rebootPageurl = "http://192.168.8.1/html/reboot.html"
 rebootFirstApplyButtonID = "undefined"
 rebootPopupConfirmButtonID = "pop_confirm"
+fullappurl = r'https://play.google.com/store/apps/details?id='
 
 
 def SendEmail(msg):
