@@ -23,6 +23,7 @@ from selenium.webdriver.firefox.options import Options
 twosecSleep = 2
 fivesecSleep = 5
 tensecSleep = 10
+twominSleep = 120
 twohourSleep = 7200
 playStoreURL=r'https://play.google.com/store'
 playStoreSearch=r'https://play.google.com/store/search?q='
