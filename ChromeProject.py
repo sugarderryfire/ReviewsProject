@@ -14,6 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 import urllib
 import os
+from selenium.webdriver.firefox.options import Options
 
 
 
