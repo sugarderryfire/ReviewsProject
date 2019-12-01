@@ -432,7 +432,7 @@ def InstallPopup2(browser):
     try:
         time.sleep(twosecSleep)
         actions = ActionChains(browser)
-        #actions.send_keys(Keys.TAB * 3)
+        actions.send_keys(Keys.TAB * 2)
         actions.send_keys(Keys.SPACE)
         actions.perform()
         #browser.refresh()
