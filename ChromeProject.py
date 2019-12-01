@@ -592,6 +592,7 @@ def browse(browser, appid, key,currEmail, currRecovery, reviewTime,currReview):
     browser.set_page_load_timeout(90)  # set a timeout for each page - if we need to wait more than 30 seconds - we want to proceed to other pages.
     browser.get(playStoreURL)
     time.sleep(10)
+    retValSubmit=False
     signin(browser, currEmail)  # signing in
     time.sleep(twosecSleep)
     pageURL = browser.current_url
