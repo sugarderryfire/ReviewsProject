@@ -27,6 +27,7 @@ twominSleep = 120
 twohourSleep = 7200
 playStoreURL=r'https://play.google.com/store'
 playStoreSearch=r'https://play.google.com/store/search?q='
+contPlayStoreSearch = r'&c=apps
 recoveryOptionsString2 = r'https://myaccount.google.com'
 verify2String = 'https://accounts.google.com'
 signIDbutton = r'gb_70'
@@ -432,7 +433,7 @@ def InstallPopup2(browser):
     try:
         time.sleep(twosecSleep)
         actions = ActionChains(browser)
-        #actions.send_keys(Keys.TAB * 3)
+        actions.send_keys(Keys.TAB * 2)
         actions.send_keys(Keys.SPACE)
         actions.perform()
         #browser.refresh()
