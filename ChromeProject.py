@@ -12,7 +12,7 @@ import xlrd
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
-import urllib
+import urllib.request
 import os
 from selenium.webdriver.firefox.options import Options
 
@@ -545,7 +545,7 @@ def bit_upload():
 
 
 def downloadFiletoLocalDB(urlFileName):
-    urllib.urlretrieve(urlFileName, outputFileName)
+    urllib.request.urlretrieve(urlFileName, outputFileName)
 
 
 def AuditReviewBitbucket(urlFileName, rowIndex, colName, newValue):
