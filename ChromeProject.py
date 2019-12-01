@@ -12,7 +12,7 @@ import xlrd
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
-import urllib.request
+import urllib
 import os
 from selenium.webdriver.firefox.options import Options
 
@@ -27,7 +27,6 @@ twominSleep = 120
 twohourSleep = 7200
 playStoreURL=r'https://play.google.com/store'
 playStoreSearch=r'https://play.google.com/store/search?q='
-contPlayStoreSearch = r'&c=apps
 recoveryOptionsString2 = r'https://myaccount.google.com'
 verify2String = 'https://accounts.google.com'
 signIDbutton = r'gb_70'
@@ -433,7 +432,7 @@ def InstallPopup2(browser):
     try:
         time.sleep(twosecSleep)
         actions = ActionChains(browser)
-        actions.send_keys(Keys.TAB * 2)
+        #actions.send_keys(Keys.TAB * 3)
         actions.send_keys(Keys.SPACE)
         actions.perform()
         #browser.refresh()
@@ -547,7 +546,7 @@ def bit_upload():
 
 
 def downloadFiletoLocalDB(urlFileName):
-    urllib.request.urlretrieve(urlFileName, outputFileName)
+    urllib.urlretrieve(urlFileName, outputFileName)
 
 
 def AuditReviewBitbucket(urlFileName, rowIndex, colName, newValue):
