@@ -651,8 +651,7 @@ def start_requests():
                 currReview = reviewList[index]
                 currDone = doneList[index]
                 options = Options()
-                options.headless = True
-                browser = webdriver.Firefox(options=options)
+                browser = webdriver.Firefox()
                 reviewAnswer = browse(browser, appid, key, currEmail, currRecovery, reviewTime,currReview)  # make a review for the current details from db.
                 if(reviewAnswer):
                     doneList[index] = "yes"  # set the value of the current field to Yes. we finish with this index.
