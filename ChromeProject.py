@@ -16,6 +16,7 @@ import urllib
 import os
 
 
+
 #wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 twosecSleep = 2
@@ -646,7 +647,9 @@ def start_requests():
                 reviewTime = timeList[index]  #  get current review.
                 currReview = reviewList[index]
                 currDone = doneList[index]
-                browser = webdriver.Firefox()
+                options = Options()
+                options.headless = True
+                browser = webdriver.Firefox(options=options)
                 reviewAnswer = browse(browser, appid, key, currEmail, currRecovery, reviewTime,currReview)  # make a review for the current details from db.
                 if(reviewAnswer):
                     doneList[index] = "yes"  # set the value of the current field to Yes. we finish with this index.
