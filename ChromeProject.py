@@ -27,7 +27,7 @@ twominSleep = 120
 twohourSleep = 7200
 playStoreURL=r'https://play.google.com/store'
 playStoreSearch=r'https://play.google.com/store/search?q='
-recoveryOptionsString2 = r'https://myaccount.google.com'
+recoveryOptionsString2 = r'myaccount'
 verify2String = 'https://accounts.google.com'
 signIDbutton = r'gb_70'
 resultsClassname = r'poRVub'
@@ -185,7 +185,8 @@ def checkRecoveryRequest(browser, currEmail, currentRecovery):
 def checkRecoveryOptionsURL(browser):
     get_url=browser.current_url
     if(recoveryOptionsString2 in get_url):
-        ALTTABFUNC(browser)
+        browser.get(playStoreURL)
+        #ALTTABFUNC(browser)
         return True
     return False
 
@@ -213,8 +214,9 @@ def signin(browser, currEmail):
     identifierInput.send_keys(currEmail)
     identifierInput.send_keys(Keys.RETURN)  # enter password and continue.
     time.sleep(4)
-    inputs = browser.find_elements_by_tag_name('input')
-    passwordInput = inputs[2]
+    #inputs = browser.find_elements_by_tag_name('input')
+    #passwordInput = inputs[2]
+    passwordInput = browser.find_element_by_name('password')
     passwordInput.send_keys(hardpassword)  # enter password
     passwordInput.send_keys(Keys.RETURN)
     time.sleep(6)
@@ -650,21 +652,31 @@ def start_requests():
                 reviewTime = timeList[index]  #  get current review.
                 currReview = reviewList[index]
                 currDone = doneList[index]
-                options = Options()
-                browser = webdriver.Chrome()
+                chrome_options = webdriver.ChromeOptions()
+		chrome_options.add_argument("--incognito")
+		#profile = webdriver.FirefoxProfile()
+    		#profile.set_preference("browser.privatebrowsing.autostart", True)
+                #browser = webdriver.Firefox(firefox_profile=profile)
+		#browser = webdriver.Firefox()
+		browser = webdriver.Chrome(chrome_options=chrome_options)
                 reviewAnswer = browse(browser, appid, key, currEmail, currRecovery, reviewTime,currReview)  # make a review for the current details from db.
                 if(reviewAnswer):
                     doneList[index] = "yes"  # set the value of the current field to Yes. we finish with this index.
                     AuditReviewBitbucket(fullFilenameDB, index, "done", "yes")  # audit in bitbucket (change, save and upload).
                 time.sleep(tensecSleep*36)
-                #changeIP(browser)  # changeip using netstick - should be in comment if not using netstick with physical computer
+                changeIP(browser)  # changeip using netstick - should be in comment if not using netstick with physical computer
                 browser.close()
                 time.sleep(twohourSleep/2)  # after publish, sleep for 1 hours.
 
 
 
 def main():
-    start_requests()
+    while(True):
+        try:
+            start_requests()
+        except:
+            SendEmail("App crashed")
+	time.sleep(twohourSleep/2)  # after publish, sleep for 1 hours.
 
 
 
