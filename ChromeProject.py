@@ -432,7 +432,7 @@ def checkReviewAudit(email2check, appid):
 
 def InstallPopup2(browser):
     try:
-        time.sleep(twosecSleep)
+        time.sleep(twosecSleep*5)
         actions = ActionChains(browser)
         #actions.send_keys(Keys.TAB * 2)  # firefox need this command. chrome does not.
         actions.send_keys(Keys.SPACE)
@@ -609,11 +609,11 @@ def browse(browser, appid, key,currEmail, currRecovery, reviewTime,currReview):
                     installapp(browser, appid, currEmail) # try to install the app
                     time.sleep(fivesecSleep)
                     retValInstallpop = InstallPopup2(browser)  # click on the install button popup
-                    time.sleep(twosecSleep)
+                    time.sleep(twosecSleep*3)
                     if (verify2String in browser.current_url or "signin" in browser.current_url):
                         SendPass(browser)
                 #check if app has already been reviewed.
-                time.sleep(twosecSleep)
+                time.sleep(twosecSleep*2)
                 browser.refresh()
                 reviewAnswer = findReviewButton(browser)  # find review button and click it
                 if(reviewAnswer):  # if still there is a review button so we didnt write the review.
