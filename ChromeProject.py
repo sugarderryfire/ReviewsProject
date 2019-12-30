@@ -8,7 +8,7 @@ from pandas import ExcelFile
 import openpyxl
 import smtplib
 import datetime
-#import xlrd
+import xlrd
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
@@ -103,6 +103,7 @@ def readDB():
 			SendEmail("Object is null - check your internet connectivity")
 			exit()
 	except Exception as e:
+		print(e)
 		SendEmail("Problem with excel review file or with internet")
 		exit()
 
@@ -642,6 +643,7 @@ def start_requests():
 	IDlist, keywordsList, emailList, recoveryList, timeList, reviewList, doneList = readDB()  #reading db with accounts
 	for index, appid in enumerate(IDlist):
 		reviewTime=timeList[index]
+		print("hi")
 		if(reviewTime is not None and checkTime(reviewTime)):  # if current review can be published
 			key = keywordsList[index]  # get current key
 			currEmail = emailList[index]  # get current email
@@ -652,6 +654,7 @@ def start_requests():
 				currReview = reviewList[index]
 				currDone = doneList[index]
 				try:
+					
 					chrome_options = webdriver.ChromeOptions()
 					chrome_options.add_argument("--incognito")
 					chrome_options.add_argument('--headless')
@@ -662,6 +665,7 @@ def start_requests():
 					#browser = webdriver.Firefox(firefox_profile=profile)
 					#browser = webdriver.Firefox()
 					browser = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=chrome_options) 
+					print("connecting to chrome")
 				except Exception as e:
 					print(e)
 				reviewAnswer = browse(browser, appid, key, currEmail, currRecovery, reviewTime,currReview)  # make a review for the current details from db.
