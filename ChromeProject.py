@@ -643,7 +643,6 @@ def start_requests():
 	IDlist, keywordsList, emailList, recoveryList, timeList, reviewList, doneList = readDB()  #reading db with accounts
 	for index, appid in enumerate(IDlist):
 		reviewTime=timeList[index]
-		print("hi")
 		if(reviewTime is not None and checkTime(reviewTime)):  # if current review can be published
 			key = keywordsList[index]  # get current key
 			currEmail = emailList[index]  # get current email
