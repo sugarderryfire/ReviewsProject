@@ -643,6 +643,7 @@ def start_requests():
 	IDlist, keywordsList, emailList, recoveryList, timeList, reviewList, doneList = readDB()  #reading db with accounts
 	for index, appid in enumerate(IDlist):
 		reviewTime=timeList[index]
+		print("hi")
 		if(reviewTime is not None and checkTime(reviewTime)):  # if current review can be published
 			key = keywordsList[index]  # get current key
 			currEmail = emailList[index]  # get current email
@@ -656,6 +657,9 @@ def start_requests():
 					
 					chrome_options = webdriver.ChromeOptions()
 					chrome_options.add_argument("--incognito")
+					chrome_options.add_argument('--headless')
+					chrome_options.add_argument('--no-sandbox')
+					chrome_options.add_argument('--disable-dev-shm-usage')
 					#profile = webdriver.FirefoxProfile()
 					#profile.set_preference("browser.privatebrowsing.autostart", True)
 					#browser = webdriver.Firefox(firefox_profile=profile)
@@ -672,6 +676,7 @@ def start_requests():
 				changeIP(browser)  # changeip using netstick - should be in comment if not using netstick with physical computer
 				browser.close()
 				time.sleep(twohourSleep/2)  # after publish, sleep for 1 hours.
+
 
 
 def main():
